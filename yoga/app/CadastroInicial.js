@@ -2,14 +2,26 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component, useState  } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput , Button, Alert } from 'react-native';
 import { format } from 'date-fns';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import BackgroundMain from '../componentes/BackgroundMain';
 
 export default function CadastroInicial() {
-  const confirmar = () => {
-    Alert.alert('Cadastro realizado com sucesso!');
-  }
+
+  const confirmar = async () => {
+      // Salvar os dados da pessoa no AsyncStorage
+      const pessoa = {
+          peso: text1,
+          altura: peso,
+          idade: idade
+      };
+
+      // Convertendo para string antes de salvar no AsyncStorage
+      await AsyncStorage.setItem('pessoa', JSON.stringify(pessoa));
+
+      Alert.alert('Cadastro realizado com sucesso!');
+  };
 
   const [text1, setText1] = useState('');
   const [peso, setPeso] = useState('');
